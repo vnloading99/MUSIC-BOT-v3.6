@@ -53,7 +53,7 @@ module.exports = {
       let embed = new EmbedBuilder()
       .setColor('#01fe66')
       .setAuthor({
-          name: 'Bộ Lọc Âm Thanh ',
+          name: 'Audio Filters',
           iconURL: 'https://cdn.discordapp.com/attachments/1235520801185337346/1237021270126624808/2024.png?ex=66440495&is=6642b315&hm=84b2772d1fca2179f3bc3532123c93ba127ef5f84c3171262509052bed991236&',
           url: 'https://discord.gg/loading99'
         })
