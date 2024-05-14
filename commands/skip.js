@@ -22,11 +22,11 @@ const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const db = require("../mongoDB");
 module.exports = {
   name: "skip",
-  description: "Switches the music being played.",
+  description: "Chuyển đổi bài hát đang phát.",
   permissions: "0x0000000000000800",
   options: [{
     name: "number",
-    description: "mention how many songs you wanna skip",
+    description: "Hãy cho biết bạn muốn bỏ qua bao nhiêu bài hát.",
     type: ApplicationCommandOptionType.Number,
     required: false
   }],
@@ -36,27 +36,27 @@ module.exports = {
     try {
 
       const queue = client.player.getQueue(interaction.guild.id);
-      if (!queue || !queue.playing) return interaction.reply({ content: '⚠️ No music playing!!', ephemeral: true }).catch(e => { })
+      if (!queue || !queue.playing) return interaction.reply({ content: '⚠️ Không có nhạc đang phát!!', ephemeral: true }).catch(e => { })
 
       let number = interaction.options.getNumber('number');
       if (number) {
-        if (!queue.songs.length > number) return interaction.reply({ content: '⚠️ Exceeded current no of songs', ephemeral: true }).catch(e => { })
-        if (isNaN(number)) return interaction.reply({ content: '⚠️ Invalid Number', ephemeral: true }).catch(e => { })
-        if (1 > number) return interaction.reply({ content: '⚠️ Invalid Number', ephemeral: true }).catch(e => { })
+        if (!queue.songs.length > number) return interaction.reply({ content: '⚠️ Đã vượt quá số bài hát hiện tại.', ephemeral: true }).catch(e => { })
+        if (isNaN(number)) return interaction.reply({ content: '⚠️ Số không hợp lệ.', ephemeral: true }).catch(e => { })
+        if (1 > number) return interaction.reply({ content: '⚠️ Số không hợp lệ.', ephemeral: true }).catch(e => { })
 
         try {
         let old = queue.songs[0];
         await client.player.jump(interaction, number).then(song => {
-          return interaction.reply({ content: `⏯️ Skipped : **${old.name}**` }).catch(e => { })
+          return interaction.reply({ content: `⏯️ Đã bỏ qua : **${old.name}**` }).catch(e => { })
         })
       } catch(e){
-        return interaction.reply({ content: '❌ Queue is empty!!', ephemeral: true }).catch(e => { })
+        return interaction.reply({ content: '❌ Hàng đợi đang trống!!', ephemeral: true }).catch(e => { })
       }
       } else {
 try {
   const queue = client.player.getQueue(interaction.guild.id);
   if (!queue || !queue.playing) {
-    return interaction.reply({ content: '⚠️ No music playing!!', ephemeral: true });
+    return interaction.reply({ content: '⚠️ Không có nhạc đang phát!!', ephemeral: true });
   }
 
   let old = queue.songs[0];
@@ -65,16 +65,16 @@ try {
   const embed = new EmbedBuilder()
     .setColor('#3498db')
     .setAuthor({
-      name: 'Song Skipped',
-      iconURL: 'https://cdn.discordapp.com/attachments/1156866389819281418/1157269773118357604/giphy.gif?ex=6517fef6&is=6516ad76&hm=f106480f7d017a07f75d543cf545bbea01e9cf53ebd42020bd3b90a14004398e&',
-      url: 'https://discord.gg/FUEHs7RCqz'
+      name: 'Chuyển Bài',
+      iconURL: 'https://cdn.discordapp.com/attachments/1235520801185337346/1237021270126624808/2024.png?ex=6644ad55&is=66435bd5&hm=126762ff956c4c0ce2ae7860943d7cda453742dff18139a2fad16d6ad6b8c49b&',
+      url: 'https://discord.gg/loading99'
     })
-    .setDescription(success ? ` **SKIPPED** : **${old.name}**` : '❌ Queue is empty!')
+    .setDescription(success ? ` **TẠM DỪNG** : **${old.name}**` : '❌ Hàng đợi đang trống!!')
     .setTimestamp();
 
   return interaction.reply({ embeds: [embed] });
 }catch (e) {
-          return interaction.reply({ content: '❌ Queue is empty!!', ephemeral: true }).catch(e => { })
+          return interaction.reply({ content: '❌ Hàng đợi đang trống!!', ephemeral: true }).catch(e => { })
         }
       }
 
