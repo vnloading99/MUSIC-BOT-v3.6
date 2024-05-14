@@ -2,17 +2,17 @@ const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const db = require("../mongoDB");
 module.exports = {
   name: "playsong",
-  description: "Play a track.",
+  description: "Phát một bài hát.",
   permissions: "0x0000000000000800",
   options: [
     {
       name: "normal",
-      description: "Open music from other platforms.",
+      description: "Mở nhạc từ các nền tảng khác.",
       type: ApplicationCommandOptionType.Subcommand,
       options: [
         {
           name: "name",
-          description: "Write your music name.",
+          description: "Viết tên bài hát của bạn.",
           type: ApplicationCommandOptionType.String,
           required: true
         }
@@ -20,12 +20,12 @@ module.exports = {
     },
     {
       name: "playlist",
-      description: "Write your playlist name.",
+      description: "Viết tên danh sách phát của bạn.",
       type: ApplicationCommandOptionType.Subcommand,
       options: [
         {
           name: "name",
-          description: "Write the name of the playlist you want to create.",
+          description: "Viết tên danh sách phát mà bạn định tạo",
           type: ApplicationCommandOptionType.String,
           required: true
         }
@@ -44,7 +44,7 @@ module.exports = {
       if (stp === "playlist") {
         let playlistw = interaction.options.getString('name')
         let playlist = await db?.playlist?.find().catch(e => { })
-        if (!playlist?.length > 0) return interaction.reply({ content: `There is no playlist. ❌`, ephemeral: true }).catch(e => { })
+        if (!playlist?.length > 0) return interaction.reply({ content: `Không có danh sách phát. ❌`, ephemeral: true }).catch(e => { })
 
         let arr = 0
         for (let i = 0; i < playlist.length; i++) {
@@ -55,16 +55,16 @@ module.exports = {
 
             if (playlist_owner_filter !== interaction.member.id) {
               if (playlist_public_filter === false) {
-                return interaction.reply({ content: `You don't have permission to play this playlist. ❌`, ephemeral: true }).catch(e => { })
+                return interaction.reply({ content: `Bạn không có quyền phát danh sách phát này. ❌`, ephemeral: true }).catch(e => { })
               }
             }
 
             const music_filter = playlist[i]?.musics?.filter(m => m.playlist_name === playlistw)
-            if (!music_filter?.length > 0) return interaction.reply({ content: `No music with Name`, ephemeral: true }).catch(e => { })
+            if (!music_filter?.length > 0) return interaction.reply({ content: `Không có bài hát nào với tên đó.`, ephemeral: true }).catch(e => { })
                 const listembed = new EmbedBuilder()
-                .setTitle('Loading Your Album')
+                .setTitle('Đang tải Album của bạn')
                 .setColor('#FF0000')
-                .setDescription('**🎸 Get ready for a musical journey!**');
+                .setDescription('**🎸 Hãy sẵn sàng cho một cuộc hành trình âm nhạc!**');
             interaction.reply({ content : '', embeds: [listembed] }).catch(e => { })
 
             let songs = []
@@ -78,12 +78,12 @@ module.exports = {
               });
               const qembed = new EmbedBuilder()
         .setAuthor({
-        name: 'Added Album Songs to Queue',
-        iconURL: 'https://cdn.discordapp.com/attachments/1156866389819281418/1157218651179597884/1213-verified.gif', 
-        url: 'https://discord.gg/FUEHs7RCqz'
+        name: 'Đã thêm các bài hát từ album vào hàng đợi.',
+        iconURL: 'https://cdn.discordapp.com/attachments/1235520801185337346/1237021270126624808/2024.png?ex=6644ad55&is=66435bd5&hm=126762ff956c4c0ce2ae7860943d7cda453742dff18139a2fad16d6ad6b8c49b&', 
+        url: 'https://discord.gg/loading99'
     })
         .setColor('#14bdff')
-        .setFooter({ text: 'Use /queue for more Information' });
+        .setFooter({ text: 'Sử dụng /queue để biết thêm thông tin.' });
            
               await interaction.editReply({ content: '',embeds: [qembed] }).catch(e => {
                   console.error('Error  reply:', e);
@@ -96,7 +96,7 @@ module.exports = {
                   interaction
                 })
               } catch (e) {
-                await interaction.editReply({ content: `❌ No results found!!`, ephemeral: true }).catch(e => { })
+                await interaction.editReply({ content: `❌ Không tìm thấy kết quả nào!!`, ephemeral: true }).catch(e => { })
               }
 
               playlist[i]?.playlist?.filter(p => p.name === playlistw).map(async p => {
@@ -125,7 +125,7 @@ module.exports = {
           } else {
             arr++
             if (arr === playlist.length) {
-              return interaction.reply({ content: `There is no Album ❌`, ephemeral: true }).catch(e => { })
+              return interaction.reply({ content: `Không có album nào ❌`, ephemeral: true }).catch(e => { })
             }
           }
         }
@@ -134,12 +134,12 @@ module.exports = {
       if (stp === "normal") {
   const name = interaction.options.getString('name');
   if (!name) {
-    return interaction.reply({ content: '▶️ Give Text or link', ephemeral: true }).catch(e => {});
+    return interaction.reply({ content: '▶️ Vui lòng cung cấp văn bản hoặc liên kết để tiếp tục', ephemeral: true }).catch(e => {});
   }
 
   const embed = new EmbedBuilder()
     .setColor('#FF0000')
-    .setDescription('**🎸 Get ready for a musical journey!**');
+    .setDescription('**🎸 Hãy sẵn sàng cho một cuộc hành trình âm nhạc!*');
 
   await interaction.reply({ embeds: [embed] }).catch(e => {});
 
@@ -152,7 +152,7 @@ module.exports = {
   } catch (e) {
     const errorEmbed = new EmbedBuilder()
       .setColor('#FF0000')
-      .setDescription('❌ No results found!!');
+      .setDescription('❌ Không tìm thấy kết quả nào!!!!');
 
     await interaction.editReply({ embeds: [errorEmbed], ephemeral: true }).catch(e => {});
   }
