@@ -108,7 +108,7 @@ module.exports = {
       if (stp === "create") {
         let name = interaction.options.getString('name')
         let public = interaction.options.getBoolean('public')
-        if (!name) return interaction.reply({ content: '⚠️ Enter Album name to create!', ephemeral: true }).catch(e => { })
+        if (!name) return interaction.reply({ content: '⚠️ Nhập tên album để tạo mới!', ephemeral: true }).catch(e => { })
 
         const userplaylist = await db.playlist.findOne({ userID: interaction.user.id })
 
@@ -116,7 +116,7 @@ module.exports = {
         if (playlist?.length > 0) {
           for (let i = 0; i < playlist.length; i++) {
             if (playlist[i]?.playlist?.filter(p => p.name === name)?.length > 0) {
-              return interaction.reply({ content: '⚠️ Album already Exitst!', ephemeral: true }).catch(e => { })
+              return interaction.reply({ content: '⚠️ Album đã tồn tại!', ephemeral: true }).catch(e => { })
             }
           }
         }
@@ -125,8 +125,8 @@ module.exports = {
 
         const creatingAlbumEmbed = new EmbedBuilder()
           .setColor('#0099ff')
-          .setTitle('Creating Album')
-          .setDescription(`Hey <@${interaction.member.id}>, your album is being created. Rock on! 🎸`)
+          .setTitle('Tạo Album')
+          .setDescription(`Chúc mừng <@${interaction.member.id}>, album của bạn đã được tạo. Nghe ngay thôi 🎸`)
           .setTimestamp();
 
         // Replying with both content and embed
