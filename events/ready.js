@@ -35,22 +35,22 @@ try {
 await rest.put(Routes.applicationCommands(client.user.id), {
 body: await client.commands,
 });
-console.log('\x1b[36m%s\x1b[0m', '|    🚀 Commands Loaded!')
+console.log('\x1b[36m%s\x1b[0m', '|    🚀 Các lệnh đã được tải!')
 } catch (err) {
-console.log('\x1b[36m%s\x1b[0m', '|    🚀 Commands Distracted!');
+console.log('\x1b[36m%s\x1b[0m', '|    🚀 "Các lệnh bị gián đoạn!');
 }
 })();
 
-console.log('\x1b[32m%s\x1b[0m', `|    🌼 Logged in as ${client.user.username}`);
+console.log('\x1b[32m%s\x1b[0m', `|    🌼 Đăng nhập với tư cách ${client.user.username}`);
 
 setInterval(() => client.user.setActivity({ 
-  name: `Update v3.6`, 
+  name: `Loading...99% Đang chơi - Legend of Mushroom`, 
   type: ActivityType.Watching }), 10000);
 client.errorLog = config.errorLog
 } else {
-console.log('\x1b[36m%s\x1b[0m', `|    🍔 Error MongoDB!`)
+console.log('\x1b[36m%s\x1b[0m', `|    🍔 Lỗi MongoDB!`)
 }
-console.log('\x1b[36m%s\x1b[0m', `|    🎯 Activity sucessfully set!`);
+console.log('\x1b[36m%s\x1b[0m', `|    🎯 Đã thiết lập hoạt động thành công!`);
 
 
 if(client.config.voteManager.status === true && client.config.voteManager.api_key){
