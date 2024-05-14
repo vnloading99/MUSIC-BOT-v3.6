@@ -3,22 +3,22 @@ const db = require('../mongoDB');
 
 module.exports = {
   name: "playlist",
-  description: "Lets you manage Album commands.",
+  description: "Cho phép bạn quản lý các lệnh về album",
   options: [
     {
       name: "create",
-      description: "Create an Album.",
+      description: "Khởi tạo Album.",
       type: ApplicationCommandOptionType.Subcommand,
       options: [
         {
           name: "name",
-          description: "Give a name for your Album",
+          description: "Hãy đặt tên cho album của bạn",
           type: ApplicationCommandOptionType.String,
           required: true
         },
         {
           name: "public",
-          description: "Want to make it Public ? True 0r false",
+          description: "Bạn muốn công khai nó không? ? Đúng hoặc Sai",
           type: ApplicationCommandOptionType.Boolean,
           required: true
         }
@@ -26,12 +26,12 @@ module.exports = {
     },
     {
       name: "delete",
-      description: "Want to remove your Album ?",
+      description: "Bạn muốn xóa Album ?",
       type: ApplicationCommandOptionType.Subcommand,
       options: [
         {
           name: "name",
-          description: "Write the name of your Album to delete.",
+          description: "Viết tên Album của bạn",
           type: ApplicationCommandOptionType.String,
           required: true
         }
@@ -39,18 +39,18 @@ module.exports = {
     },
     {
       name: "add-music",
-      description: "It allows you to add songs to the Album.",
+      description: "Nó cho phép bạn thêm bài hát vào Album.",
       type: ApplicationCommandOptionType.Subcommand,
       options: [
         {
           name: "playlist-name",
-          description: "Write an Album name.",
+          description: "Viết tên Album của bạn",
           type: ApplicationCommandOptionType.String,
           required: true
         },
         {
           name: "name",
-          description: "Write a song name or a song link.",
+          description: "Viết tên nhạc",
           type: ApplicationCommandOptionType.String,
           required: true
         }
@@ -58,18 +58,18 @@ module.exports = {
     },
     {
       name: "delete-music",
-      description: "It allows you to delete song from Album.",
+      description: "Nó cho phép bạn xóa bài hát khỏi Album.",
       type: ApplicationCommandOptionType.Subcommand,
       options: [
         {
           name: "playlist-name",
-          description: "Write an Album name.",
+          description: "Viết tên list nhạc",
           type: ApplicationCommandOptionType.String,
           required: true
         },
         {
           name: "name",
-          description: "Write a song name.",
+          description: "Viết tên nhạc.",
           type: ApplicationCommandOptionType.String,
           required: true
         }
