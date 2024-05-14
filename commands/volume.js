@@ -26,11 +26,11 @@ const db = require("../mongoDB");
 
 module.exports = {
   name: "volume",
-  description: "Allows you to adjust the music volume.",
+  description: "Cho phép bạn điều chỉnh âm lượng nhạc.",
   permissions: "0x0000000000000800",
   options: [{
     name: 'volume',
-    description: 'Type the number to adjust the volume.',
+    description: 'Nhập số để điều chỉnh âm lượng.',
     type: ApplicationCommandOptionType.Integer,
     required: true
   }],
@@ -39,25 +39,25 @@ module.exports = {
     try {
       const queue = client.player.getQueue(interaction.guild.id);
       if (!queue || !queue.playing) {
-        return interaction.reply({ content: '⚠️ No music playing!!', ephemeral: true });
+        return interaction.reply({ content: '⚠️ Không có nhạc đang phát!!', ephemeral: true });
       }
 
       const vol = parseInt(interaction.options.getInteger('volume'));
 
       if (!vol) {
         return interaction.reply({
-          content: `Current volume: **${queue.volume}** 🔊\nTo change the volume, type a number between \`1\` and \`${maxVol}\`.`,
+          content: `Current volume: **${queue.volume}** 🔊\nĐể thay đổi âm lượng, hãy nhập một số từ \`1\` và \`${maxVol}\`.`,
           ephemeral: true
         });
       }
 
       if (queue.volume === vol) {
-        return interaction.reply({ content: 'Current volume is already set to **' + vol + '**!', ephemeral: true });
+        return interaction.reply({ content: 'Âm lượng hiện tại đã được đặt là **' + âm nhạc + '**!', ephemeral: true });
       }
 
       if (vol < 1 || vol > maxVol) {
         return interaction.reply({
-          content: `Please type a number between \`1\` and \`${maxVol}\`.`,
+          content: `Vui lòng nhập một số giữa \`1\` và \`${maxVol}\`.`,
           ephemeral: true
         });
       }
@@ -68,15 +68,15 @@ module.exports = {
         const embed = new EmbedBuilder()
           .setColor('#d291fe')
           .setAuthor({
-        name: 'Your Music! Your Rules!',
-        iconURL: 'https://cdn.discordapp.com/attachments/1156866389819281418/1157528025739563088/5657-volume-icon.png?ex=6518ef7b&is=65179dfb&hm=1797c2830537a28b5c6a57564517cc509146d02383a69fb4239d7b5d55aceeed&', 
-        url: 'https://discord.gg/FUEHs7RCqz'
+        name: 'Nhạc của bạn! Quyền lực của bạn!',
+        iconURL: 'https://cdn.discordapp.com/attachments/1235520801185337346/1237021270126624808/2024.png?ex=6644ad55&is=66435bd5&hm=126762ff956c4c0ce2ae7860943d7cda453742dff18139a2fad16d6ad6b8c49b&', 
+        url: 'https://discord.gg/loading99'
     })
-          .setDescription(`**Adjusting Volume : ** **${vol}/${maxVol}**`);
+          .setDescription(`**Đang điều chỉnh Âm lượng : ** **${vol}/${maxVol}**`);
 
         return interaction.reply({ embeds: [embed] });
       } else {
-        return interaction.reply({ content: '❌ Something went wrong while changing the volume.', ephemeral: true });
+        return interaction.reply({ content: '❌ Có điều gì đó đã sai khi thay đổi âm lượng.', ephemeral: true });
       }
     } catch (e) {
       console.error(e);
