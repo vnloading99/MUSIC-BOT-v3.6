@@ -23,7 +23,7 @@ const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
   name: "clear",
-  description: "Clears the music queue.",
+  description: "Xóa sạch hàng đợi nhạc.",
   permissions: "0x0000000000000800",
   options: [],
   voiceChannel: true,
@@ -32,11 +32,11 @@ module.exports = {
     
     try {
       if (!queue || !queue.playing) {
-        return interaction.reply({ content: '⚠️ No music playing!!', ephemeral: true });
+        return interaction.reply({ content: '⚠️ Không có nhạc đang phát!!', ephemeral: true });
       }
 
       if (!queue.songs[0]) {
-        return interaction.reply({ content: '❌ Queue is empty!!', ephemeral: true });
+        return interaction.reply({ content: '❌ "Hàng đợi đang trống!!', ephemeral: true });
       }
 
       await queue.stop(interaction.guild.id);
@@ -45,10 +45,10 @@ module.exports = {
         .setColor('#3498db')
         .setAuthor({
           name: 'Cleared List',
-          iconURL: 'https://cdn.discordapp.com/attachments/1156866389819281418/1157314241393598585/4618-no-slides.png?ex=65182861&is=6516d6e1&hm=dac8fed5a18e1574485e833d4c017591c50f59d161e1bde7fed5f6a92543f951&',
-          url: 'https://discord.gg/FUEHs7RCqz'
+          iconURL: 'https://cdn.discordapp.com/attachments/1235520801185337346/1237021270126624808/2024.png?ex=66440495&is=6642b315&hm=84b2772d1fca2179f3bc3532123c93ba127ef5f84c3171262509052bed991236&',
+          url: 'https://discord.gg/loading99'
         })
-        .setDescription('**Queue cleared! Be Ready for a new musical journey.**')
+        .setDescription('**Hàng đợi đã được xóa! Hãy sẵn sàng cho một cuộc hành trình âm nhạc mới.**')
        
 
       interaction.reply({ embeds: [embed] });
