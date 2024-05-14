@@ -7,14 +7,14 @@ module.exports = async (client, queue, song) => {
     if (queue?.textChannel) {
       const embed = new EmbedBuilder()
       .setAuthor({
-        name: 'Currently playing a Track',
-        iconURL: 'https://cdn.discordapp.com/attachments/1140841446228897932/1144671132948103208/giphy.gif', 
+        name: 'Hiện đang phát một bản nhạc',
+        iconURL: 'https://cdn.discordapp.com/attachments/1235520801185337346/1237021270126624808/2024.png?ex=66440495&is=6642b315&hm=84b2772d1fca2179f3bc3532123c93ba127ef5f84c3171262509052bed991236&', 
         url: 'https://discord.gg/FUEHs7RCqz'
     })
-    .setDescription(`\n ‎ \n▶️ **Details :** **${song?.name}**\n▶️ **Enjoy the Ultimate Music Experience. ** \n▶️ **If link breaks playback try to give query.**`)
+    .setDescription(`\n ‎ \n▶️ **Thông tin chi tiết :** **${song?.name}**\n▶️ **Trải nghiệm âm nhạc tuyệt vời nhất ** \n▶️ **Nếu liên kết bị gián đoạn, hãy thử tìm kiếm bằng từ khóa.**`)
 .setImage(queue.songs[0].thumbnail)
     .setColor('#FF0000')
-    .setFooter({ text: 'More info - Use /help command [GlaceYT]' });
+    .setFooter({ text: 'Thông tin thêm - Sử dụng lệnh /help [Loading...999%]' });
      
       queue?.textChannel?.send({ embeds: [embed] }).catch(e => { });
     }
