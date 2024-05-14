@@ -7,13 +7,13 @@ module.exports = async (client, queue, song) => {
     if (queue?.textChannel) {
       const embed = new EmbedBuilder()
         .setAuthor({
-        name: 'Added To Queue',
-        iconURL: 'https://cdn.discordapp.com/attachments/1156866389819281418/1157218651179597884/1213-verified.gif?ex=6517cf5a&is=65167dda&hm=bc8fb4414cb412587ade0af285b77569d2568214cf7d6baab8702ddeb6c38ad5&', 
-        url: 'https://discord.gg/FUEHs7RCqz'
+        name: 'Đã thêm vào hàng đợi',
+        iconURL: 'https://cdn.discordapp.com/attachments/1235520801185337346/1237021270126624808/2024.png?ex=66440495&is=6642b315&hm=84b2772d1fca2179f3bc3532123c93ba127ef5f84c3171262509052bed991236&', 
+        url: 'https://discord.gg/loading99'
     })
         .setDescription(`<@${song.user.id}>, **${song.name}**`)
         .setColor('#14bdff')
-        .setFooter({ text: 'Use /queue for more Information' });
+        .setFooter({ text: 'Sử dụng /queue để biết thêm thông tin' });
       queue?.textChannel?.send({ embeds: [embed] }).catch(e => { });
     }
   }
