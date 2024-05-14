@@ -1,7 +1,7 @@
 const status = "AUTOMATIC";
-const botName = "🎸 MUSIC BOT";
-const rtxText = "RTX";
-const version = "Latest@ v3.6"; 
+const botName = "🎸 LOADING...99%";
+const rtxText = "Loading...99%";
+const version = "Loading...99% BOT MUSIC VER 1"; 
 const startTime = Date.now();
 
 function printWatermark() {
@@ -35,6 +35,6 @@ module.exports = {
    
    # MADE BY RTX!! FEEL FREE TO USE ANY PART OF CODE
    ## FOR HELP CONTACT ME ON DISCORD
-   ## Contact    [ DISCORD SERVER :  https://discord.gg/FUEHs7RCqz ]
+   ## Contact    [ DISCORD SERVER :  https://discord.gg/loading99 ]
    ## YT : https://www.youtube.com/channel/UCPbAvYWBgnYhliJa1BIrv0A
 */
