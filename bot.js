@@ -129,7 +129,7 @@ app.get('/', (req, res) => {
   res.sendFile(imagePath);
 });
 app.listen(port, () => {
-  console.log(`🔗 Listening to GlaceYT: http://localhost:${port}`);
+  console.log(`🔗 Listening to Loading..99%: http://localhost:${port}`);
 });
 printWatermark();
 
