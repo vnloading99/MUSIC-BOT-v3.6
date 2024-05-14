@@ -44,7 +44,7 @@ console.log('\x1b[36m%s\x1b[0m', '|    🚀 "Các lệnh bị gián đoạn!');
 console.log('\x1b[32m%s\x1b[0m', `|    🌼 Đăng nhập với tư cách ${client.user.username}`);
 
 setInterval(() => client.user.setActivity({ 
-  name: `Tụi VietCode xàm loz code ngu`, 
+  name: `Hóng VietCode nói những câu xàm loz`, 
   type: ActivityType.Watching }), 10000);
 client.errorLog = config.errorLog
 } else {
